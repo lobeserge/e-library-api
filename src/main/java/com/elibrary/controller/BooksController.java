@@ -4,7 +4,7 @@ import java.net.URI;
 import java.util.List;
 import java.util.Optional;
 
-import org.aspectj.weaver.ast.Var;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-
+import com.elibrary.exception.UserNotFound;
 import com.elibrary.model.Book;
 import com.elibrary.repository.BookRepository;
 
@@ -38,6 +38,8 @@ public class BooksController {
 	public ResponseEntity<Object> retriveOneBooks(@PathVariable int id){
 		
 		Optional<Book> book=bookRepository.findById(id);
+		if(!book.isPresent()) 
+			throw new UserNotFound("book-id-"+id+" not found");
 		return new ResponseEntity<>(book,HttpStatus.OK);	
 	}
 	

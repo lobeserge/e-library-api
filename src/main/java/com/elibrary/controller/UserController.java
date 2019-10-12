@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.elibrary.exception.UserNotFound;
 import com.elibrary.model.User;
 import com.elibrary.repository.UserRepository;
 
@@ -33,7 +34,11 @@ public class UserController {
 	
 	@GetMapping("/users/{id}")
 	public ResponseEntity<Object> retriveOneUsers(@PathVariable int id ){
+		
 		Optional<User> user=userRepository.findById(id);
+		if(!user.isPresent()) 
+			throw new UserNotFound("user-id-"+id+" not found");
+		
 		return new ResponseEntity<>(user,HttpStatus.OK);
 		
 	}
