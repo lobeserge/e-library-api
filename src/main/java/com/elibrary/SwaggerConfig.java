@@ -21,10 +21,10 @@ public class SwaggerConfig {
 	
 	
 	  public static final Contact DEFAULT_CONTACT = new Contact(
-			  "Lobe Nyoh Serge $ Brice Amel", "https://github.com/lobeserge/product-catalog-api-springboot", "lobeserge100@gmail.com");
+			  "Lobe Nyoh Serge", "https://github.com/lobeserge/e-library-api", "lobeserge100@gmail.com");
 	  
 	  public static final ApiInfo DEFAULT_API_INFO = new ApiInfo( 
-			  "Product Catalog", "Simple Spring boot api", "1.0", 
+			  "E-Library API", "a rest api with spring boot", "1.0", 
 			  "urn:tos", DEFAULT_CONTACT, 
 			  "Apache 2.0", "http://www/apache.org/licenses/LICENSE-2.0");
 
